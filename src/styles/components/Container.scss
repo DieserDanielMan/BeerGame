@@ -1,0 +1,28 @@
+@import "../../vars";
+
+div.container {
+  width: 100%;
+  height: 100%;
+  background-color: $color_background_grey;
+  border: 1px solid $color_layout_border;
+  border-radius: $global_element_border_radius;
+  &.half {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    grid-gap: 15px;
+  }
+  &.grid {
+    display: grid;
+  }
+  &.white {
+    background-color: white;
+  }
+}
+
+div.container_inner {
+
+}

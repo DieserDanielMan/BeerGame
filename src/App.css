@@ -1,0 +1,10 @@
+div.App {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 100px 1fr;
+    grid-template-areas:
+        "nav header"
+        "nav main";
+}

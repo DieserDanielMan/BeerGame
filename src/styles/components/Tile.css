@@ -1,0 +1,33 @@
+div.tile {
+  width: 200px;
+  height: fit-content;
+  background-color: #ecf0f1;
+  border: 1px solid #bdc3c7;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+}
+div.tile.selected {
+  background-color: #f39c12;
+  color: white;
+  border-color: #ce800e;
+}
+div.tile img {
+  width: 75px;
+  height: auto;
+  margin-bottom: 15px;
+}
+div.tile img.selected {
+  filter: invert(1);
+}
+div.tile span {
+  font-size: 1.25rem;
+}
+
+/*# sourceMappingURL=Tile.css.map */

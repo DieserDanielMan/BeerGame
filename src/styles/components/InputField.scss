@@ -1,0 +1,24 @@
+@import "../../vars";
+
+div.input_wrapper {
+  width: 100%;
+  text-align: center;
+  input[type=text], input[type=number] {
+    width: 100%;
+    height: 35px;
+    font-size: 1rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: $global_element_border_radius;
+    outline: none;
+    border: 1px solid $color_layout_border;
+    &.invalid {
+      border-color: red;
+    }
+  }
+  p {
+    text-align: left;
+    padding-left: 5px;
+    font-size: 0.8rem;
+  }
+}
