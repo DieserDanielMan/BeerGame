@@ -33,7 +33,6 @@ function NewGame(props) {
             socket.off("join_to_game")
         }
     }, [])
-//daniel stinkt
 
     if(redirect.length > 0)
     {
