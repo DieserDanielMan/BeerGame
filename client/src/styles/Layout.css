@@ -1,0 +1,64 @@
+header {
+  grid-area: header;
+  border-bottom: 1px solid #bdc3c7;
+  display: flex;
+  padding-left: 25px;
+  align-items: center;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+}
+header h1 {
+  font-weight: 400;
+  font-size: 3rem;
+  background: url("../res/icons/beer.svg") no-repeat;
+  padding-left: 65px;
+}
+header h1 span.orange {
+  color: #f39c12;
+}
+header h1 span.italic {
+  font-style: italic;
+}
+
+nav {
+  grid-area: nav;
+  border-right: 1px solid #bdc3c7;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #ecf0f1;
+}
+nav ul {
+  width: 100%;
+  display: grid;
+  grid-auto-rows: 40px;
+  grid-gap: 10px;
+  padding: 0;
+}
+nav ul a {
+  text-decoration: none;
+  color: black;
+  border-radius: 3px;
+}
+nav ul a.selected {
+  background-color: #f39c12;
+  color: white;
+}
+nav ul a li {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 3px;
+}
+nav ul a li:hover {
+  background-color: rgba(243, 156, 18, 0.5);
+}
+
+main {
+  grid-area: main;
+  padding: 25px;
+}
+
+/*# sourceMappingURL=Layout.css.map */

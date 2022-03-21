@@ -1,0 +1,14 @@
+div.not_found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+  h1 {
+    font-size: 5rem;
+    margin: 0;
+  }
+  h3 {
+    margin: 0;
+  }
+}
