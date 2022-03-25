@@ -1,9 +1,11 @@
 import {useParams} from "react-router-dom"
 
 import "../styles/pages/PlayGame.css"
+import InputField from "../components/form/InputField"
 import {useEffect} from "react";
 import Container from "../components/form/Container";
 import InnerContainer from "../components/form/InnerContainer";
+import Button from "../components/form/Button";
 
 function PlayGame(props) {
 
@@ -19,42 +21,35 @@ function PlayGame(props) {
 
     return (
         <div className={"grid_play"}>
-            <Container
-                settings={{
-                    id: "settings",
-                    mode: {
-                        grid: true
-                    },
-                    style: {
-                        padding: 10
-                    }}
-            }>
-                <Container
-                    settings={{
-                        mode: {
-                            grid: true,
-                            gridRows: "1fr",
-                            gridColumns: "1fr 1fr 1fr"
-                        },
-                        style: {
-                            white: true
-                        }
-                    }}>
-                    <p>hi</p>
-                    <p>hi</p>
-                    <p>hi</p>
-                    <p>hi</p>
-                </Container>
-            </Container>
-            <Container
-                settings={{
-                    id: "game",
-                    mode: {
-                        grid: true
-                    }
-            }}>
-
-            </Container>
+            <div className={"playground"}>
+                <div className={"wrapper_img"}>
+                    <img src={"/icons/box.svg"} alt={"Icon"} />
+                    <span>Spielrolle</span>
+                </div>
+                <div className={"line"} />
+                <div className={"wrapper_1"}>
+                    <span>Lager: 15</span>
+                    <span>Verzug: 156</span>
+                </div>
+                <div className={"line"} />
+                <div className={"new_order"}>
+                    <span>Neue Bestellung:</span>
+                    <InputField />
+                    <Button>Bestellen</Button>
+                </div>
+                <div className={"line"} />
+                <>
+                    <span>Künftige Lieferungen:</span>
+                    <div className={"next_products"}>
+                        <span>Nächste Woche: 45</span>
+                        <span>Übernächste Woche: 45</span>
+                    </div>
+                </>
+                <div className={"line"} />
+                <div className={"delivery"}>
+                    <span>Lieferanfrage: 15</span>
+                </div>
+            </div>
         </div>
     )
 }

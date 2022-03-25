@@ -1,9 +1,7 @@
 div.tile {
-  width: 200px;
   height: fit-content;
   background-color: #ecf0f1;
   border: 1px solid #bdc3c7;
-  margin: 15px;
   padding: 15px;
   border-radius: 3px;
   display: flex;
@@ -28,6 +26,7 @@ div.tile img.selected {
 }
 div.tile span {
   font-size: 1.25rem;
+  font-weight: 400 !important;
 }
 
 /*# sourceMappingURL=Tile.css.map */

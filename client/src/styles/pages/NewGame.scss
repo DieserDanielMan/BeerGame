@@ -9,6 +9,21 @@ div.game_select {
     justify-content: center;
     margin-bottom: 20px;
   }
+  div.select_rounds {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    font-size: 1.25rem;
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    input[type=radio] {
+      transform: scale(1.25);
+      margin-right: 10px;
+    }
+  }
   div.options_wrapper {
     width: 75%;
     margin-left: 12.5%;
@@ -17,6 +32,22 @@ div.game_select {
     border: 1px solid $color_layout_border;
     border-radius: $global_element_border_radius;
     padding: 15px;
+    display: grid;
+    grid-gap: 15px;
+    span {
+      font-weight: bold;
+    }
+    button {
+      height: 50px;
+      font-size: 1.5rem;
+    }
+    div.select_role {
+      width: 100%;
+      height: auto;
+      display: grid;
+      grid-gap: 15px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
     &.half {
       width: 50%;
       margin-left: 25%;

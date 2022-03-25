@@ -41,7 +41,12 @@ class InputField extends React.Component {
                     name={this.props.name}
                     onChange={(event) => this.onChangeHandler(event)}
                 />
-                <p>{this.props.description}</p>
+                {this.props.description ?
+                    <p>{this.props.description}</p>
+                :
+                    <></>
+                }
+
             </div>
         );
     }

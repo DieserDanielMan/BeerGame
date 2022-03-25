@@ -1,11 +1,11 @@
 @import "../../vars";
 
 div.tile {
-  width: 200px;
+  //width: 200px;
   height: fit-content;
   background-color: $color_background_grey;
   border: 1px solid $color_layout_border;
-  margin: 15px;
+  //margin: 15px;
   padding: 15px;
   border-radius: $global_element_border_radius;
   display: flex;
@@ -30,5 +30,6 @@ div.tile {
   }
   span {
     font-size: 1.25rem;
+    font-weight: 400 !important;
   }
 }
