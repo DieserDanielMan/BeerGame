@@ -22,6 +22,9 @@ function PlayGame(props) {
     return (
         <div className={"grid_play"}>
             <div className={"playground"}>
+                <div className={"timer"}>
+                    <span>Verbleibende Zeit: 15sec</span>
+                </div>
                 <div className={"wrapper_img"}>
                     <img src={"/icons/box.svg"} alt={"Icon"} />
                     <span>Spielrolle</span>

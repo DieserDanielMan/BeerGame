@@ -54,6 +54,9 @@ div.grid_play div.next_products span {
   justify-content: center;
   align-items: center;
 }
+div.grid_play div.timer {
+  text-align: right;
+}
 div.grid_play div.line {
   height: 1px;
   width: 100%;
