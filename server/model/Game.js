@@ -1,4 +1,4 @@
-class Model {
+class Game {
     constructor(id, gameID, gameCreated, rounds, timePerRound, startStock, startValue, raisedValue, roundOfRaise, storage, delay, order, oneRound, twoRound, threeRound) {
         this.id = id,
             this.gameID = gameID,
