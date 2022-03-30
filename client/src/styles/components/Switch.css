@@ -2,6 +2,7 @@ div.switch_wrapper {
   width: 100%;
   min-height: 40px;
 }
+
 div.switch_wrapper label.switch {
   float: left;
   position: relative;
@@ -10,22 +11,27 @@ div.switch_wrapper label.switch {
   height: 25px;
   margin-right: 15px;
 }
+
 div.switch_wrapper label.switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
+
 div.switch_wrapper label.switch input:checked + span.slider_round {
   background-color: #f39c12;
 }
+
 div.switch_wrapper label.switch input:focus + span.slider_round {
-  box-shadow: 0 0 1px #f39c12;
+  -webkit-box-shadow: 0 0 1px #f39c12;
+          box-shadow: 0 0 1px #f39c12;
 }
+
 div.switch_wrapper label.switch input:checked + span.slider_round:before {
   -webkit-transform: translateX(23px);
-  -ms-transform: translateX(23px);
   transform: translateX(23px);
 }
+
 div.switch_wrapper label.switch span.slider_round {
   position: absolute;
   cursor: pointer;
@@ -34,10 +40,11 @@ div.switch_wrapper label.switch span.slider_round {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition: .4s;
+  transition: .4s;
   border-radius: 30px;
 }
+
 div.switch_wrapper label.switch span.slider_round:before {
   position: absolute;
   content: "";
@@ -46,13 +53,13 @@ div.switch_wrapper label.switch span.slider_round:before {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition: .4s;
+  transition: .4s;
   border-radius: 50%;
 }
+
 div.switch_wrapper p {
   font-size: 1rem;
   margin: 2px 0 0 0;
 }
-
 /*# sourceMappingURL=Switch.css.map */

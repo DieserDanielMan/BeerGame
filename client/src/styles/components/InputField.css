@@ -2,6 +2,7 @@ div.input_wrapper {
   width: 100%;
   text-align: center;
 }
+
 div.input_wrapper input[type=text], div.input_wrapper input[type=number] {
   width: 100%;
   height: 35px;
@@ -12,14 +13,15 @@ div.input_wrapper input[type=text], div.input_wrapper input[type=number] {
   outline: none;
   border: 1px solid #bdc3c7;
 }
+
 div.input_wrapper input[type=text].invalid, div.input_wrapper input[type=number].invalid {
   border-color: red;
 }
+
 div.input_wrapper p {
   text-align: left;
   padding-left: 5px;
   font-size: 0.8rem;
   margin-bottom: 0;
 }
-
 /*# sourceMappingURL=InputField.css.map */

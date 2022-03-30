@@ -1,9 +1,14 @@
 div.grid_play {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
   height: 100%;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 div.grid_play div.playground {
   width: 75%;
   margin-left: 12.5%;
@@ -12,55 +17,95 @@ div.grid_play div.playground {
   border: 1px solid #bdc3c7;
   border-radius: 3px;
   padding: 15px;
+  display: -ms-grid;
   display: grid;
   grid-gap: 15px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
 }
+
 div.grid_play div.wrapper_img img {
   width: 100%;
   height: 100px;
 }
+
 div.grid_play div.wrapper_img span {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 1.25rem;
 }
+
 div.grid_play div.new_order {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 150px 1fr 150px;
+  -ms-grid-columns: 150px 1fr 150px;
+      grid-template-columns: 150px 1fr 150px;
   grid-gap: 15px;
 }
+
 div.grid_play div.new_order span {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 div.grid_play div.wrapper_1 {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
 }
+
 div.grid_play div.wrapper_1 span {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 div.grid_play div.next_products {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
 }
+
 div.grid_play div.next_products span {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 div.grid_play div.timer {
   text-align: right;
 }
+
 div.grid_play div.line {
   height: 1px;
   width: 100%;
   background-color: black;
 }
-
 /*# sourceMappingURL=PlayGame.css.map */

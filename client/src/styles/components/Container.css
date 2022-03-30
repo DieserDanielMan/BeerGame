@@ -5,20 +5,25 @@ div.container {
   border: 1px solid #bdc3c7;
   border-radius: 3px;
 }
+
 div.container.half {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
   padding: 15px;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 5fr 2fr;
+  -ms-grid-columns: 5fr 2fr;
+      grid-template-columns: 5fr 2fr;
   grid-gap: 15px;
 }
+
 div.container.grid {
+  display: -ms-grid;
   display: grid;
 }
+
 div.container.white {
   background-color: white;
 }
-
 /*# sourceMappingURL=Container.css.map */

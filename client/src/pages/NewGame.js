@@ -18,6 +18,10 @@ function NewGame(props) {
     const [gameCode, setGameCode] = useState("")
     const [redirect, setRedirect] = useState("")
     const [numericValue, setNumericValue] = useState("")
+    const [startStock, setstartStock]= useState(0)
+    const [startValue, setstartValue]= useState(0)
+    const [raisedValue, setraisedValue]= useState(0)
+    const [roundOfRaise, setroundOfRaise]= useState(0)
 
     const [selectRoleMenu, setSelectRoleMenu] = useState(false)
 
@@ -77,6 +81,31 @@ function NewGame(props) {
                         <label htmlFor={"52"}>52 Spielrunden</label>
                     </div>
                 </div>
+                <span>Wählen Sie den Anfangsbestand der Spieler:</span>
+                <InputField
+                    name={"Anfangsbestand"}
+                    // getValue={setstartStock}
+                    description={"Bsp.: 15"}
+                /> 
+                <span>Wählen Sie die Nachfragemenge:</span>
+                <InputField
+                    name={"Nachfragemenge"}
+                    // getValue={setstartValue}
+                    description={"Bsp.: 5"}
+                /> 
+                <span>Wählen Sie die erhöhte Nachfrage:</span>
+                <InputField
+                    name={"erhöhte Nachfrage"}
+                    // getValue={setraisedValue}
+                    description={"Bsp.: 10"}
+                /> 
+                <span>Wählen Sie die Runde in der die Nachfragemenge erhöht wird:</span>
+                <InputField
+                    name={"Runde der Erhöhung"}
+                    // getValue={setroundOfRaise}
+                    description={"je nach Anzahl der Sielrunden 17 oder 35"}
+                /> 
+
                 <span>Wählen Sie eine Rolle:</span>
                 <div className={"select_role"}>
                     <Tile
