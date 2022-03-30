@@ -13,3 +13,4 @@ Dieser Befehl wird genutzt, um die benötigten Pakete von Drittanbietern zu inst
 
 ### `npm start`
 Dieser Befehl wird genutzt, um das Projekt zu starten und den Aufruf im Browser (lokal, bzw. im Netzwerk) zu ermöglichen.
+...
