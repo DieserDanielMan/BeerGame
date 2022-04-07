@@ -1,3 +1,6 @@
+const stockCosts = 5
+const backorderCosts = 10
+
 //Berechnung der Wochen ohne Störungen (Perfekte Auftragsrate)
 export function calcPerfectOrderRatePct(perfectOrders, allOrders) {
     return perfectOrders / allOrders
@@ -10,13 +13,11 @@ export function calcStorageCostsWeekly(currentStorageCosts, backorderCosts) {
 
 //Berechnung der Lagergesamtkosten mit Lagerbestandsmenge
 export function calcStorageCosts(previousWeekCosts, newStock){
-    let stockCosts = 5;
     return previousWeekCosts + (newStock * stockCosts)
 }
 
 //Berechnung der Lagergesamtkosten mit Backorderanzahl
 export function calcStorageCostsBackorder(previousWeekCosts, backorder){
-    let backorderCosts = 10;
     return previousWeekCosts + (backorder * backorderCosts)
 }
 
