@@ -106,37 +106,39 @@ function NewGame(props) {
                     description={"je nach Anzahl der Sielrunden 17 oder 35"}
                 /> 
 
-                <span>Wählen Sie eine Rolle:</span>
-                <div className={"select_role"}>
-                    <Tile
-                        imgSrc={"/icons/factory.svg"}
-                        imgAlt={"Neues Spiel"}
-                        idKey={1}
-                        getValue={setSelectedRole}
-                        currentSelected={selectedRole}
-                    >Produzent</Tile>
-                    <Tile
-                        imgSrc={"/icons/box.svg"}
-                        imgAlt={"Neues Spiel"}
-                        idKey={2}
-                        getValue={setSelectedRole}
-                        currentSelected={selectedRole}
-                    >Verteiler</Tile>
-                    <Tile
-                        imgSrc={"/icons/wholesale.svg"}
-                        imgAlt={"Neues Spiel"}
-                        idKey={3}
-                        getValue={setSelectedRole}
-                        currentSelected={selectedRole}
-                    >Großhändler</Tile>
-                    <Tile
-                        imgSrc={"/icons/shop.svg"}
-                        imgAlt={"Neues Spiel"}
-                        idKey={4}
-                        getValue={setSelectedRole}
-                        currentSelected={selectedRole}
-                    >Einzelhändler</Tile>
-                </div>
+                {/*
+                    <span>Wählen Sie eine Rolle:</span>
+                    <div className={"select_role"}>
+                        <Tile
+                            imgSrc={"/icons/factory.svg"}
+                            imgAlt={"Neues Spiel"}
+                            idKey={1}
+                            getValue={setSelectedRole}
+                            currentSelected={selectedRole}
+                        >Produzent</Tile>
+                        <Tile
+                            imgSrc={"/icons/box.svg"}
+                            imgAlt={"Neues Spiel"}
+                            idKey={2}
+                            getValue={setSelectedRole}
+                            currentSelected={selectedRole}
+                        >Verteiler</Tile>
+                        <Tile
+                            imgSrc={"/icons/wholesale.svg"}
+                            imgAlt={"Neues Spiel"}
+                            idKey={3}
+                            getValue={setSelectedRole}
+                            currentSelected={selectedRole}
+                        >Großhändler</Tile>
+                        <Tile
+                            imgSrc={"/icons/shop.svg"}
+                            imgAlt={"Neues Spiel"}
+                            idKey={4}
+                            getValue={setSelectedRole}
+                            currentSelected={selectedRole}
+                        >Einzelhändler</Tile>
+                    </div>
+                */}
                 <Button>Spiel starten</Button>
             </div>
         )

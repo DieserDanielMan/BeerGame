@@ -1,55 +1,35 @@
 div.home {
   width: 100%;
   height: 100%;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  -ms-grid-rows: 100px 1fr 100px;
-      grid-template-rows: 100px 1fr 100px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr 100px;
 }
-
 div.home div.wrapper_logos {
   width: 100%;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-
 div.home div.wrapper_button {
   width: 100%;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-
 div.home div.wrapper_button button {
   width: 250px;
   height: 80px;
   font-size: 1.5rem;
 }
-
 div.home div.logo.leibniz {
   background: url("../../res/images/leibniz.svg") no-repeat 50%;
   width: 400px;
   height: 300px;
   background-size: 400px;
 }
-
 div.home div.logo.Beergame {
   margin-left: 100px;
   background: url("../../res/images/Beergame.jpeg");
@@ -57,7 +37,6 @@ div.home div.logo.Beergame {
   height: 303px;
   background-size: 300px;
 }
-
 div.home div.logo.welfen {
   margin-left: 100px;
   background: url("../../res/images/welfen.svg");
@@ -65,9 +44,8 @@ div.home div.logo.welfen {
   height: 303px;
   background-size: 300px;
 }
-
 div.home svg {
-  -webkit-transform: scale(2);
-          transform: scale(2);
+  transform: scale(2);
 }
+
 /*# sourceMappingURL=Home.css.map */

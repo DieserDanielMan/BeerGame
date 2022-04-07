@@ -22,7 +22,7 @@ class Home extends React.Component {
                     jederzeit bedienen zu können.</h4>
                 <div className={"wrapper_button"}>
                     <Link to={"/game/create"}>
-                        <Button onClick={() => this.onClickHandler}>Spiel starten</Button>
+                        <Button linkTo={"/game/create"}>Spiel starten</Button>
                     </Link>
                 </div>
             </div>

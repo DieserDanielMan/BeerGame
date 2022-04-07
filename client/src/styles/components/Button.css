@@ -12,9 +12,13 @@ button {
   font-weight: 500;
   font-family: Roboto, sans-serif;
 }
-
 button:hover {
   color: white;
   background-color: #f39c12;
 }
+button a {
+  text-decoration: none;
+  color: white;
+}
+
 /*# sourceMappingURL=Button.css.map */
