@@ -52,6 +52,13 @@ function PlayGame(props) {
                 <div className={"delivery"}>
                     <span>Lieferanfrage: 15</span>
                 </div>
+                <div className={"line"} />
+                <div className={"costs"}>
+                    <span>Lagerkosten: 15</span>
+                    <span>Backorderkosten: 0</span>
+                    <span>Gesamtkosten: 15</span>
+                </div>
+
             </div>
         </div>
     )

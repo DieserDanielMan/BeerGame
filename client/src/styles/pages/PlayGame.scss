@@ -56,8 +56,18 @@ div.grid_play {
       align-items: center;
     }
   }
+ 
   div.delivery {
 
+  }
+  div.costs{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   div.timer {
     text-align: right;
