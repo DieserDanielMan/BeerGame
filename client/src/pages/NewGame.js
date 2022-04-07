@@ -63,18 +63,40 @@ function NewGame(props) {
     }
 
     function createGame() {
-        socket.emit("game_create", {
-            gameCode,
-            rounds,
-            startStock,
-            startValue,
-            raisedValue,
-            roundOfRaise
+        if(!checkIfStringIsValid(gameCode)) {
+            alert("Spielcode nicht korrekt!")
+            setInputError(true)
+        }
+        else if(!rounds) {
+            alert("Wählen Sie die Anzahl der Runden aus!")
+            setInputError(true)
+        }
+        else if(!checkIfStringIsValid(startStock, "numeric")) {
+            alert("Der Anfangsbestand muss ein numerischer Wert sein!")
+        }
+        else if(!checkIfStringIsValid(startValue, "numeric")) {
+            alert("Die Nachfragemenge muss ein numerischer Wert sein!")
+        }
+        else if(!checkIfStringIsValid(raisedValue, "numeric")) {
+            alert("Die erhöhte Nachfragemenge muss ein numerischer Wert sein!")
+        }
+        else if(!checkIfStringIsValid(roundOfRaise, "numeric") || roundOfRaise > rounds || roundOfRaise < 1) {
+            alert("Die Runde, in der die Nachfragemenge erhöht wird, muss ein numerischer Wert sein und darf nicht kleiner als 1 sowie größer als die Anzahl der Runden sein!")
+        }
+        else {
+            socket.emit("game_create", {
+                gameCode,
+                rounds,
+                startStock,
+                startValue,
+                raisedValue,
+                roundOfRaise
 
-        })
+            })
+        }
     }
 
-    function getRadioValue(e) {
+    function getSelectedRounds(e) {
         setRounds(e.target.value)
     }
 
@@ -89,7 +111,7 @@ function NewGame(props) {
                     description={"Zulässige Zeichen: A-Z, a-z, 0-9"}
                 />
                 <span>Wählen Sie die Anzahl der Spielrunden:</span>
-                <div className={"select_rounds"} onChange={getRadioValue}>
+                <div className={"select_rounds"} onChange={getSelectedRounds}>
                     <div>
                         <input id={"26"} type={"radio"} name={"rounds"} value={26}/>
                         <label htmlFor={"26"}>26 Spielrunden</label>
