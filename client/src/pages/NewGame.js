@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react"
 import { Redirect } from "react-router-dom"
+import axios from "axios"
 
 import "../styles/pages/NewGame.css"
 import Tile from "../components/Tile"
@@ -58,6 +59,10 @@ function NewGame(props) {
             setInputError(true)
         }
         //console.log(gameCode)
+    }
+
+    function createGame() {
+
     }
 
     let options = ""
@@ -139,7 +144,7 @@ function NewGame(props) {
                         >Einzelhändler</Tile>
                     </div>
                 */}
-                <Button>Spiel starten</Button>
+                <Button>Spiel erstellen</Button>
             </div>
         )
     }
