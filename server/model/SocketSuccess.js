@@ -1,4 +1,4 @@
-class SocketSuccess {
+export default class SocketSuccess {
     constructor(status, body) {
         this.head = {
             status: status

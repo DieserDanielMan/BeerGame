@@ -1,6 +1,6 @@
 import {checkIfPlayerIsInAnyRoom} from "../functions/lib.js";
-import SocketError from "../model/SocketError"
-import SocketSuccess from "../model/SocketSuccess"
+import SocketError from "../model/SocketError.js"
+import SocketSuccess from "../model/SocketSuccess.js"
 
 export default function JoinGame(io, socket, room) {
     console.log("Case 1")

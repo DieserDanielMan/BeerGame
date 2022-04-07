@@ -18,11 +18,12 @@ function NewGame(props) {
     const [selectedRole, setSelectedRole] = useState(0)
     const [gameCode, setGameCode] = useState("")
     const [redirect, setRedirect] = useState("")
+    const [rounds, setRounds] = useState(0)
     const [numericValue, setNumericValue] = useState("")
-    const [startStock, setstartStock]= useState(0)
-    const [startValue, setstartValue]= useState(0)
-    const [raisedValue, setraisedValue]= useState(0)
-    const [roundOfRaise, setroundOfRaise]= useState(0)
+    const [startStock, setStartStock]= useState(0)
+    const [startValue, setStartValue]= useState(0)
+    const [raisedValue, setRaisedValue]= useState(0)
+    const [roundOfRaise, setRoundOfRaise]= useState(0)
 
     const [selectRoleMenu, setSelectRoleMenu] = useState(false)
 
@@ -62,7 +63,19 @@ function NewGame(props) {
     }
 
     function createGame() {
+        socket.emit("game_create", {
+            gameCode,
+            rounds,
+            startStock,
+            startValue,
+            raisedValue,
+            roundOfRaise
 
+        })
+    }
+
+    function getRadioValue(e) {
+        setRounds(e.target.value)
     }
 
     let options = ""
@@ -76,38 +89,38 @@ function NewGame(props) {
                     description={"Zulässige Zeichen: A-Z, a-z, 0-9"}
                 />
                 <span>Wählen Sie die Anzahl der Spielrunden:</span>
-                <div className={"select_rounds"}>
+                <div className={"select_rounds"} onChange={getRadioValue}>
                     <div>
-                        <input id={"26"} type={"radio"} name={"rounds"} />
+                        <input id={"26"} type={"radio"} name={"rounds"} value={26}/>
                         <label htmlFor={"26"}>26 Spielrunden</label>
                     </div>
                     <div>
-                        <input id={"52"} type={"radio"} name={"rounds"} />
+                        <input id={"52"} type={"radio"} name={"rounds"} value={52} />
                         <label htmlFor={"52"}>52 Spielrunden</label>
                     </div>
                 </div>
                 <span>Wählen Sie den Anfangsbestand der Spieler:</span>
                 <InputField
                     name={"Anfangsbestand"}
-                    // getValue={setstartStock}
+                    getValue={setStartStock}
                     description={"Bsp.: 15"}
                 /> 
                 <span>Wählen Sie die Nachfragemenge:</span>
                 <InputField
                     name={"Nachfragemenge"}
-                    // getValue={setstartValue}
+                    getValue={setStartValue}
                     description={"Bsp.: 5"}
                 /> 
                 <span>Wählen Sie die erhöhte Nachfrage:</span>
                 <InputField
                     name={"erhöhte Nachfrage"}
-                    // getValue={setraisedValue}
+                    getValue={setRaisedValue}
                     description={"Bsp.: 10"}
                 /> 
                 <span>Wählen Sie die Runde in der die Nachfragemenge erhöht wird:</span>
                 <InputField
                     name={"Runde der Erhöhung"}
-                    // getValue={setroundOfRaise}
+                    getValue={setRoundOfRaise}
                     description={"je nach Anzahl der Sielrunden 17 oder 35"}
                 /> 
 
@@ -144,7 +157,7 @@ function NewGame(props) {
                         >Einzelhändler</Tile>
                     </div>
                 */}
-                <Button>Spiel erstellen</Button>
+                <Button onClick={createGame}>Spiel erstellen</Button>
             </div>
         )
     }
