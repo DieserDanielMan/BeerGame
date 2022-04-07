@@ -1,4 +1,4 @@
-class SocketError {
+export default class SocketError {
     constructor(message) {
         this.head = {
             err: true,

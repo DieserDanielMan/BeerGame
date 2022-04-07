@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react"
 import { Redirect } from "react-router-dom"
+import axios from "axios"
 
 import "../styles/pages/NewGame.css"
 import Tile from "../components/Tile"
@@ -17,11 +18,12 @@ function NewGame(props) {
     const [selectedRole, setSelectedRole] = useState(0)
     const [gameCode, setGameCode] = useState("")
     const [redirect, setRedirect] = useState("")
+    const [rounds, setRounds] = useState(0)
     const [numericValue, setNumericValue] = useState("")
-    const [startStock, setstartStock]= useState(0)
-    const [startValue, setstartValue]= useState(0)
-    const [raisedValue, setraisedValue]= useState(0)
-    const [roundOfRaise, setroundOfRaise]= useState(0)
+    const [startStock, setStartStock]= useState(0)
+    const [startValue, setStartValue]= useState(0)
+    const [raisedValue, setRaisedValue]= useState(0)
+    const [roundOfRaise, setRoundOfRaise]= useState(0)
 
     const [selectRoleMenu, setSelectRoleMenu] = useState(false)
 
@@ -60,6 +62,22 @@ function NewGame(props) {
         //console.log(gameCode)
     }
 
+    function createGame() {
+        socket.emit("game_create", {
+            gameCode,
+            rounds,
+            startStock,
+            startValue,
+            raisedValue,
+            roundOfRaise
+
+        })
+    }
+
+    function getRadioValue(e) {
+        setRounds(e.target.value)
+    }
+
     let options = ""
     if(selectedGameMode === 1) {
         options = (
@@ -71,73 +89,75 @@ function NewGame(props) {
                     description={"Zulässige Zeichen: A-Z, a-z, 0-9"}
                 />
                 <span>Wählen Sie die Anzahl der Spielrunden:</span>
-                <div className={"select_rounds"}>
+                <div className={"select_rounds"} onChange={getRadioValue}>
                     <div>
-                        <input id={"26"} type={"radio"} name={"rounds"} />
+                        <input id={"26"} type={"radio"} name={"rounds"} value={26}/>
                         <label htmlFor={"26"}>26 Spielrunden</label>
                     </div>
                     <div>
-                        <input id={"52"} type={"radio"} name={"rounds"} />
+                        <input id={"52"} type={"radio"} name={"rounds"} value={52} />
                         <label htmlFor={"52"}>52 Spielrunden</label>
                     </div>
                 </div>
                 <span>Wählen Sie den Anfangsbestand der Spieler:</span>
                 <InputField
                     name={"Anfangsbestand"}
-                    // getValue={setstartStock}
+                    getValue={setStartStock}
                     description={"Bsp.: 15"}
                 /> 
                 <span>Wählen Sie die Nachfragemenge:</span>
                 <InputField
                     name={"Nachfragemenge"}
-                    // getValue={setstartValue}
+                    getValue={setStartValue}
                     description={"Bsp.: 5"}
                 /> 
                 <span>Wählen Sie die erhöhte Nachfrage:</span>
                 <InputField
                     name={"erhöhte Nachfrage"}
-                    // getValue={setraisedValue}
+                    getValue={setRaisedValue}
                     description={"Bsp.: 10"}
                 /> 
                 <span>Wählen Sie die Runde in der die Nachfragemenge erhöht wird:</span>
                 <InputField
                     name={"Runde der Erhöhung"}
-                    // getValue={setroundOfRaise}
+                    getValue={setRoundOfRaise}
                     description={"je nach Anzahl der Sielrunden 17 oder 35"}
                 /> 
 
-                <span>Wählen Sie eine Rolle:</span>
-                <div className={"select_role"}>
-                    <Tile
-                        imgSrc={"/icons/factory.svg"}
-                        imgAlt={"Neues Spiel"}
-                        idKey={1}
-                        getValue={setSelectedRole}
-                        currentSelected={selectedRole}
-                    >Produzent</Tile>
-                    <Tile
-                        imgSrc={"/icons/box.svg"}
-                        imgAlt={"Neues Spiel"}
-                        idKey={2}
-                        getValue={setSelectedRole}
-                        currentSelected={selectedRole}
-                    >Verteiler</Tile>
-                    <Tile
-                        imgSrc={"/icons/wholesale.svg"}
-                        imgAlt={"Neues Spiel"}
-                        idKey={3}
-                        getValue={setSelectedRole}
-                        currentSelected={selectedRole}
-                    >Großhändler</Tile>
-                    <Tile
-                        imgSrc={"/icons/shop.svg"}
-                        imgAlt={"Neues Spiel"}
-                        idKey={4}
-                        getValue={setSelectedRole}
-                        currentSelected={selectedRole}
-                    >Einzelhändler</Tile>
-                </div>
-                <Button>Spiel starten</Button>
+                {/*
+                    <span>Wählen Sie eine Rolle:</span>
+                    <div className={"select_role"}>
+                        <Tile
+                            imgSrc={"/icons/factory.svg"}
+                            imgAlt={"Neues Spiel"}
+                            idKey={1}
+                            getValue={setSelectedRole}
+                            currentSelected={selectedRole}
+                        >Produzent</Tile>
+                        <Tile
+                            imgSrc={"/icons/box.svg"}
+                            imgAlt={"Neues Spiel"}
+                            idKey={2}
+                            getValue={setSelectedRole}
+                            currentSelected={selectedRole}
+                        >Verteiler</Tile>
+                        <Tile
+                            imgSrc={"/icons/wholesale.svg"}
+                            imgAlt={"Neues Spiel"}
+                            idKey={3}
+                            getValue={setSelectedRole}
+                            currentSelected={selectedRole}
+                        >Großhändler</Tile>
+                        <Tile
+                            imgSrc={"/icons/shop.svg"}
+                            imgAlt={"Neues Spiel"}
+                            idKey={4}
+                            getValue={setSelectedRole}
+                            currentSelected={selectedRole}
+                        >Einzelhändler</Tile>
+                    </div>
+                */}
+                <Button onClick={createGame}>Spiel erstellen</Button>
             </div>
         )
     }
