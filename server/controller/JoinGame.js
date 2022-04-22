@@ -11,7 +11,7 @@ export default function JoinGame(io, socket, room) {
         else
         {
             socket.join(room)
-            socket.emit("join_to_game", new SocketSuccess(200, {room: room}))
+            socket.emit("join_to_game", new SocketSuccess(200, "Das Spiel " + room + " wurde erfolgreich betreten.",{room: room}))
         }
     }
     else if(io.sockets.adapter.rooms.get(room).size > 4)
@@ -24,27 +24,13 @@ export default function JoinGame(io, socket, room) {
         if(checkIfPlayerIsInAnyRoom(io, socket.id))
         {
             socket.emit("join_to_game",
-                {
-                    head: {
-                        err: true,
-                        errMsg: "Spieler ist bereits in einem Spiel angemeldet..."
-                    }
-                }
-            )
+                new SocketError("Spieler ist bereits in einem Spiel angemeldet."))
         }
         else
         {
             socket.join(room)
             socket.emit("join_to_game",
-                {
-                    head: {
-                        status: 200
-                    },
-                    body: {
-                        room: room
-                    }
-                }
-            )
+                new SocketSuccess(200, "Das Spiel " + room + " wurde erfolgreich betreten.", {room: room}))
         }
     }
 }

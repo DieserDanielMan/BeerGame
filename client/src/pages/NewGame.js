@@ -80,18 +80,26 @@ function NewGame(props) {
         else if(!checkIfStringIsValid(raisedValue, "numeric")) {
             alert("Die erhöhte Nachfragemenge muss ein numerischer Wert sein!")
         }
-        else if(!checkIfStringIsValid(roundOfRaise, "numeric") || roundOfRaise > rounds || roundOfRaise < 1) {
+        /*else if(!checkIfStringIsValid(roundOfRaise, "numeric") || roundOfRaise > rounds || roundOfRaise < 1) {
             alert("Die Runde, in der die Nachfragemenge erhöht wird, muss ein numerischer Wert sein und darf nicht kleiner als 1 sowie größer als die Anzahl der Runden sein!")
-        }
+        }*/
         else {
             socket.emit("game_create", {
                 gameCode,
-                rounds,
-                startStock,
-                startValue,
-                raisedValue,
-                roundOfRaise
-
+                gameCreated: new Date(),
+                gameSettings: {
+                    rounds,
+                    startStock,
+                    startValue,
+                    raisedValue,
+                    roundOfRaise
+                },
+                roundData: {
+                    producer: [],
+                    distributor: [],
+                    wholesaler: [],
+                    retailer: []
+                }
             })
         }
     }

@@ -1,7 +1,8 @@
 export default class SocketSuccess {
-    constructor(status, body) {
+    constructor(status, message, body) {
         this.head = {
-            status: status
+            status: status,
+            message: message
         }
         this.body = body
     }
