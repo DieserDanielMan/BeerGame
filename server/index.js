@@ -2,6 +2,15 @@ import { Server } from "socket.io";
 import {checkIfPlayerIsInAnyRoom} from "./functions/lib.js";
 import JoinGame from "./controller/JoinGame.js";
 import CreateGame from "./controller/CreateGame.js";
+import mongoose from 'mongoose';
+
+const mongoose = require('mongoose');
+const config = require('config');
+const dbConfig = config.get('Test.dbConfig.dbName');
+
+await mongoose.connect(dbConfig).then(()=>{
+    console.log('Database connected');
+}).catch(console.error('Database connection failed ' + error));
 
 const io = new Server({
     cors: {
