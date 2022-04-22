@@ -26,7 +26,7 @@ const DBGame = new Schema({
         roundOfRaise: {
             type: Number,
             required: true
-        }
+        } 
     },
     roundData: {
         wholesaler: {

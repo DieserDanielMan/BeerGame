@@ -20,48 +20,84 @@ function PlayGame(props) {
     })
 
     return (
-        <div className={"grid_play"}>
-            <div className={"playground"}>
-                <div className={"timer"}>
-                    <span>Verbleibende Zeit: 15sec</span>
-                </div>
-                <div className={"wrapper_img"}>
-                    <img src={"/icons/box.svg"} alt={"Icon"} />
-                    <span>Spielrolle</span>
-                </div>
-                <div className={"line"} />
-                <div className={"wrapper_1"}>
-                    <span>Lager: 15</span>
-                    <span>Verzug: 156</span>
-                </div>
-                <div className={"line"} />
-                <div className={"new_order"}>
-                    <span>Neue Bestellung:</span>
-                    <InputField />
-                    <Button>Bestellen</Button>
-                </div>
-                <div className={"line"} />
-                <>
-                    <span>Künftige Lieferungen:</span>
-                    <div className={"next_products"}>
-                        <span>Nächste Woche: 45</span>
-                        <span>Übernächste Woche: 45</span>
+        <div>
+            <div className={"grid_play"}>
+                <div className={"playground"}>
+                    <div className={"timer"}>
+                        <span>Verbleibende Zeit: 15sec</span>
                     </div>
-                </>
-                <div className={"line"} />
-                <div className={"delivery"}>
-                    <span>Lieferanfrage: 15</span>
+                    <div className={"wrapper_img"}>
+                        <img src={"/icons/box.svg"} alt={"Icon"} />
+                        <span>Spielrolle</span>
+                    </div>
+                    <div className={"line"} />
+                    <div className={"wrapper_1"}>
+                        <span>Lager: 15</span>
+                        <span>Verzug: 156</span>
+                    </div>
+                    <div className={"line"} />
+                    <div className={"new_order"}>
+                        <span>Neue Bestellung:</span>
+                        <InputField />
+                        <Button>Bestellen</Button>
+                    </div>
+                    <div className={"line"} />
+                    <>
+                        <span>Künftige Lieferungen:</span>
+                        <div className={"next_products"}>
+                            <span>Nächste Woche: 45</span>
+                            <span>Übernächste Woche: 45</span>
+                        </div>
+                    </>
+                    <div className={"line"} />
+                    <div className={"delivery"}>
+                        <span>Lieferanfrage: 15</span>
+                    </div>
                 </div>
-                <div className={"line"} />
-                <div className={"costs"}>
-                    <span>Lagerkosten: 15</span>
-                    <span>Backorderkosten: 0</span>
-                    <span>Gesamtkosten: 15</span>
-                </div>
-
             </div>
+
+            <div>&nbsp;</div>
+
+                <div className={"grid_play2"}>
+                    <div className={"playground2"}>
+                        <div className={"KPItable"}>
+                            <table>
+                                 <tr>
+                                    <th>Runde</th>
+                                    <th>Lagerkosten</th>
+                                    <th>Backorderkosten</th>
+                                    <th>Gesamtkosten</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>20</td>
+                                    <td>0</td>
+                                    <td>20</td>
+
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td>0</td>
+                                    <td>20</td>
+
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>20</td>
+                                    <td>0</td>
+                                    <td>20</td>
+
+                                </tr>
+                            </table>         
+                        </div>
+                    </div>
+                </div>   
+        
         </div>
     )
+    
+
 }
 
 export default PlayGame

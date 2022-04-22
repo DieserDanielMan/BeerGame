@@ -84,4 +84,8 @@ div.game_select div.options_wrapper.half {
       grid-template-columns: 5fr 2fr;
   grid-gap: 15px;
 }
+
+fieldset{
+  border:0;
+}
 /*# sourceMappingURL=NewGame.css.map */

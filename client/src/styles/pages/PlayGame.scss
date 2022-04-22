@@ -3,8 +3,11 @@ div.grid_play {
   width: 100%;
   height: 100%;
   justify-content: center;
-  //align-items: center;
+  align-items: center;
+
+  
   div.playground {
+    // grid-row-start: 1;
     width: 75%;
     margin-left: 12.5%;
     margin-right: 12.5%;
@@ -12,10 +15,15 @@ div.grid_play {
     border: 1px solid #bdc3c7;
     border-radius: 3px;
     padding: 15px;
-    display: grid;
+    display: inline-block;
     grid-gap: 15px;
     height: fit-content;
   }
+
+
+
+  
+
   div.wrapper_img {
     img {
       width: 100%;
@@ -77,4 +85,27 @@ div.grid_play {
     width: 100%;
     background-color: black;
   }
+}
+
+div.grid_play2 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  
+
+div.playground2{
+  // grid-row-start: 2;
+  width: 75%;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  background-color: #ecf0f1;
+  border: 1px solid #bdc3c7;
+  border-radius: 3px;
+  padding: 15px;
+  display: inline-block;
+  grid-gap: 15px;
+  height: fit-content;
+}
 }
