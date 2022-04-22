@@ -6,6 +6,10 @@ const DBGame = new Schema({
         type: Number,
         required: true
     },
+    gameCreated: {
+        type: Date,
+        required: true
+    },
     gameSettings: {
         rounds: {
             type: Number,
@@ -29,12 +33,19 @@ const DBGame = new Schema({
         }
     },
     roundData: {
+        producer: {
+            type: Array
+        },
+        distributor: {
+            type: Array
+        },
         wholesaler: {
             type: Array
         },
         retailer: {
             type: Array
         }
-
     }
 })
+
+export default DBGame;
