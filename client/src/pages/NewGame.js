@@ -129,33 +129,33 @@ function NewGame(props) {
                         <label htmlFor={"52"}>52 Spielrunden</label>
                     </div>
                 </div>
-                <fieldset disabled>
+                
                 <span>Wählen Sie den Anfangsbestand der Spieler:</span>
                 <InputField 
-                    name={"15"}
+                    name={"Anfangsbestand"}
                     getValue={setStartStock}
                     description={"Bsp.: 15"}
                     
                 /> 
                 <span>Wählen Sie die Nachfragemenge:</span>
                 <InputField
-                    name={"5"}
+                    name={"Nachfragemenge"}
                     getValue={setStartValue}
                     description={"Bsp.: 5"}
                 /> 
                 <span>Wählen Sie die erhöhte Nachfrage:</span>
                 <InputField
-                    name={"10"}
+                    name={"Nachfragemenge"}
                     getValue={setRaisedValue}
                     description={"Bsp.: 10"}
                 /> 
                 <span>Wählen Sie die Runde in der die Nachfragemenge erhöht wird:</span>
                 <InputField
-                    name={"17"}
+                    name={"Runde der Erhöhung"}
                     getValue={setRoundOfRaise}
                     description={"je nach Anzahl der Sielrunden 17 oder 35"}
                 /> 
-                </fieldset>
+                
 
                 {/*
                     <span>Wählen Sie eine Rolle:</span>
