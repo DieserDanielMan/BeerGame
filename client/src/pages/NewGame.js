@@ -34,7 +34,7 @@ function NewGame(props) {
         socket.on("join_to_game", (data) => {
             console.log("Socket called")
             if(data.head.err)
-                alert(data.head.errMsg + socket.id)
+                alert(data.head.errMsg)
             else
             {
                 //setRedirect(data.body.room)
@@ -53,7 +53,20 @@ function NewGame(props) {
 
     function onJoinGameClick() {
         if(checkIfStringIsValid(gameCode)) {
-            socket.emit("join_game", gameCode)
+            if(selectedRole === 0) {
+                console.log("Socket submit")
+                socket.emit("join_game", {
+                    gameCode,
+                    selectedRole
+                })
+            }
+            else {
+                console.log("Socket submit")
+                socket.emit("join_game", {
+                    gameCode,
+                    selectedRole
+                })
+            }
         }
         else {
             alert("Nicht korrekt ")

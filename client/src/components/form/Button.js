@@ -6,6 +6,7 @@ import "../../styles/components/Button.css"
 class Button extends React.Component {
 
     onClickHandler(event) {
+        console.log("Button OnClick called")
         event.preventDefault()
         this.props.onClick()
     }

@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 const DBGame = new Schema({
     gameCode: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     gameCreated: {
         type: Date,

@@ -15,7 +15,7 @@ mongoose.connect("mongodb+srv://ersterUserTest:Welfniz22db@beergame.supqd.mongod
     .then(()=>{
         io.on("connection", (socket) => {
             console.log(socket.id)
-            socket.on("join_game", (room) => JoinGame(io, socket, room))
+            socket.on("join_game", (data) => JoinGame(io, socket, data))
             socket.on("game_create", (data) => CreateGame(io, socket, data))
             socket.on("disconnect", (socket) => {
 
