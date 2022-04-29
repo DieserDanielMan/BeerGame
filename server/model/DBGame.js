@@ -33,6 +33,28 @@ const DBGame = new Schema({
             required: true
         } 
     },
+    playerData: {
+        producer: {
+            type: String,
+            required: true,
+            default: ""
+        },
+        distributor: {
+            type: String,
+            required: true,
+            default: ""
+        },
+        wholesaler: {
+            type: String,
+            required: true,
+            default: ""
+        },
+        retailer: {
+            type: String,
+            required: true,
+            default: ""
+        }
+    },
     roundData: {
         producer: {
             type: Array
