@@ -1,16 +1,8 @@
 import { Server } from "socket.io";
-import {checkIfPlayerIsInAnyRoom} from "./functions/lib.js";
+import mongoose from "mongoose"
+
 import JoinGame from "./controller/JoinGame.js";
 import CreateGame from "./controller/CreateGame.js";
-import mongoose from 'mongoose';
-
-const mongoose = require('mongoose');
-const config = require('config');
-const dbConfig = config.get('Test.dbConfig.dbName');
-
-await mongoose.connect(dbConfig).then(()=>{
-    console.log('Database connected');
-}).catch(console.error('Database connection failed ' + error));
 
 const io = new Server({
     cors: {
@@ -19,13 +11,19 @@ const io = new Server({
     }
 });
 
-io.on("connection", (socket) => {
-    console.log(socket.id)
-    socket.on("join_game", (room) => JoinGame(io, socket, room))
-    socket.on("game_create", (data) => CreateGame(io, socket, data))
-    socket.on("disconnect", (socket) => {
+mongoose.connect("mongodb+srv://ersterUserTest:Welfniz22db@beergame.supqd.mongodb.net/BeerGame?retryWrites=true&w=majority")
+    .then(()=>{
+        io.on("connection", (socket) => {
+            console.log(socket.id)
+            socket.on("join_game", (room) => JoinGame(io, socket, room))
+            socket.on("game_create", (data) => CreateGame(io, socket, data))
+            socket.on("disconnect", (socket) => {
 
-    })
+            })
+        });
+        console.log('Database connected');
+}).catch(() => {
+    console.log("Error")
 });
 
 io.listen(3001);

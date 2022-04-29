@@ -1,8 +1,11 @@
 import mongoose from "mongoose"
-
-const db = mongoose
+import DBGame from "../model/DBGame.js";
 
 export default function CreateGame(io, socket, data) {
-    //db.connect()
+    const GameData = mongoose.model("DBGame", DBGame)
+    const Current = new GameData(data)
+    Current.save(err => {
+        if(err) console.log(err)
+    })
     console.log(data)
 }

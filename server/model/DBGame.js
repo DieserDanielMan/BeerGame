@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const DBGame = new Schema({
     gameCode: {
-        type: Number,
+        type: String,
         required: true
     },
     gameCreated: {
