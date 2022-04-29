@@ -13,5 +13,9 @@
   "dependencies": {
     "mongoose": "^6.2.10",
     "socket.io": "^4.3.0"
+  },
+    "dependencies": {
+    "config": "^3.3.7",
+    "mongoose": "^6.3.1"
   }
 }
