@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import Container from "../components/form/Container";
 import InnerContainer from "../components/form/InnerContainer";
 import Button from "../components/form/Button";
+import Countdown from '../lib/Countdown';
 
 function PlayGame(props) {
 
@@ -19,12 +20,14 @@ function PlayGame(props) {
         }
     })
 
+    const hoursMinSecs = {hours:0, minutes: 0, seconds: 60}
+    
     return (
         <div>
             <div className={"grid_play"}>
                 <div className={"playground"}>
                     <div className={"timer"}>
-                        <span>Verbleibende Zeit: 15sec</span>
+                        <Countdown hoursMinSecs={hoursMinSecs}/>
                     </div>
                     <div className={"wrapper_img"}>
                         <img src={"/icons/box.svg"} alt={"Icon"} />

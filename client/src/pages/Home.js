@@ -8,6 +8,8 @@ class Home extends React.Component {
     onClickHandler() {
 
     }
+
+    
     render() {
         return (
             <div className={"home"}>

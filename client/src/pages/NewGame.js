@@ -26,10 +26,12 @@ function NewGame(props) {
     const [roundOfRaise, setRoundOfRaise]= useState(0)
 
     const [selectRoleMenu, setSelectRoleMenu] = useState(false)
+    const [disabledRoles, setDisabledRoles] = useState([0,0,0,0])
 
     const [inputError, setInputError] = useState(false)
 
-    let redirectComponent = <></>
+    const [redirectComponent, setRedirectComponent] = useState(<></>)
+
     useEffect(() => {
         socket.on("join_to_game", (data) => {
             console.log("Socket called")
@@ -37,19 +39,49 @@ function NewGame(props) {
                 alert(data.head.errMsg)
             else
             {
-                //setRedirect(data.body.room)
-                setSelectRoleMenu(true)
+                console.log("Rolle gewählt: " + data.body)
+                localStorage.setItem("role", JSON.stringify(data.body.role))
+                setRedirectComponent(<Redirect to={`/game/play/${data.body.room}`} />)
+            }
+        })
+        socket.on("game_choose_role", data => {
+            console.log(data)
+            setSelectRoleMenu(true)
+            let tempArray = []
+            if(data.producer === "NA")
+                tempArray.push(false)
+            else tempArray.push(true)
+            if(data.distributor === "NA")
+                tempArray.push(false)
+            else tempArray.push(true)
+            if(data.wholesaler === "NA")
+                tempArray.push(false)
+            else tempArray.push(true)
+            if(data.retailer === "NA")
+                tempArray.push(false)
+            else tempArray.push(true)
+            setDisabledRoles(tempArray)
+        })
+        socket.on("game_create", data => {
+            if(data.head.err) {
+                alert(data.head.errMsg)
+            }
+            else {
+                setSelectedGameMode(2)
+                alert(data.head.message)
             }
         })
         return function cleanup() {
             socket.off("join_to_game")
+            socket.off("game_choose_role")
+            socket.off("game_create")
         }
     }, [])
 
-    if(redirect.length > 0)
+    /*if(redirect.length > 0)
     {
         redirectComponent = <Redirect to={`/game/play/${gameCode}`} />
-    }
+    }*/
 
     function onJoinGameClick() {
         if(checkIfStringIsValid(gameCode)) {
@@ -227,6 +259,7 @@ function NewGame(props) {
                                 idKey={1}
                                 getValue={setSelectedRole}
                                 currentSelected={selectedRole}
+                                disabled={disabledRoles[0]}
                             >Produzent</Tile>
                             <Tile
                                 imgSrc={"/icons/box.svg"}
@@ -234,6 +267,7 @@ function NewGame(props) {
                                 idKey={2}
                                 getValue={setSelectedRole}
                                 currentSelected={selectedRole}
+                                disabled={disabledRoles[1]}
                             >Verteiler</Tile>
                             <Tile
                                 imgSrc={"/icons/wholesale.svg"}
@@ -241,6 +275,7 @@ function NewGame(props) {
                                 idKey={3}
                                 getValue={setSelectedRole}
                                 currentSelected={selectedRole}
+                                disabled={disabledRoles[2]}
                             >Großhändler</Tile>
                             <Tile
                                 imgSrc={"/icons/shop.svg"}
@@ -248,6 +283,7 @@ function NewGame(props) {
                                 idKey={4}
                                 getValue={setSelectedRole}
                                 currentSelected={selectedRole}
+                                disabled={disabledRoles[3]}
                             >Einzelhändler</Tile>
                         </div>
                     </>

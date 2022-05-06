@@ -5,6 +5,7 @@ import "../styles/components/Tile.css"
 class Tile extends React.Component {
 
     onClickHandler() {
+        if(this.props.disabled) return
         this.props.getValue(this.props.idKey)
     }
 
@@ -13,6 +14,14 @@ class Tile extends React.Component {
         {
             return (
                 <div className={"tile selected"} onClick={() => this.onClickHandler()}>
+                    <img src={this.props.imgSrc} className={"selected"} alt={this.props.imgAlt} />
+                    <span>{this.props.children}</span>
+                </div>
+            );
+        }
+        else if(this.props.disabled) {
+            return (
+                <div className={"tile disabled"} onClick={() => this.onClickHandler()}>
                     <img src={this.props.imgSrc} className={"selected"} alt={this.props.imgAlt} />
                     <span>{this.props.children}</span>
                 </div>
