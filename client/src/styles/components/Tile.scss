@@ -20,6 +20,11 @@ div.tile {
     color: white;
     border-color: $color_theme_border;
   }
+  &.disabled {
+    background-color: darkgrey;
+    color: white;
+    cursor: not-allowed;
+  }
   img {
     width: 75px;
     height: auto;

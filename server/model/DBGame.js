@@ -37,22 +37,22 @@ const DBGame = new Schema({
         producer: {
             type: String,
             required: true,
-            default: ""
+            default: "NA"
         },
         distributor: {
             type: String,
             required: true,
-            default: ""
+            default: "NA"
         },
         wholesaler: {
             type: String,
             required: true,
-            default: ""
+            default: "NA"
         },
         retailer: {
             type: String,
             required: true,
-            default: ""
+            default: "NA"
         }
     },
     roundData: {

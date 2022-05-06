@@ -12,7 +12,7 @@ import Message from "./components/Message";
 
 function App() {
     console.log("App mount")
-    const socket = io("http://localhost:3001")
+    const socket = io.connect("http://beergame.usb-sys.de:3001")
     useEffect(() => {
         socket.on("connect", () => {
             console.log(socket.id); // x8WIv7-mJelg7on_ALbx
