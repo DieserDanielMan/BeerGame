@@ -94,7 +94,7 @@ function PlayGame(props) {
                                     <td>50</td>
                                     <td>66%</td>
                                     <td>13</td>
-                                    <td>66%</td>
+                                    <td>33%</td>
 
                                 </tr>
                             </table>         

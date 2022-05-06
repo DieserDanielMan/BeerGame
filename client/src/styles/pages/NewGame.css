@@ -2,27 +2,46 @@ div.game_select {
   width: 100%;
   height: 100%;
 }
+
 div.game_select div.tile_wrapper {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-bottom: 20px;
 }
+
 div.game_select div.select_rounds {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
   font-size: 1.25rem;
 }
+
 div.game_select div.select_rounds div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 div.game_select div.select_rounds input[type=radio] {
-  transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
   margin-right: 10px;
 }
+
 div.game_select div.options_wrapper {
   width: 75%;
   margin-left: 12.5%;
@@ -31,33 +50,42 @@ div.game_select div.options_wrapper {
   border: 1px solid #bdc3c7;
   border-radius: 3px;
   padding: 15px;
+  display: -ms-grid;
   display: grid;
   grid-gap: 15px;
 }
+
 div.game_select div.options_wrapper span {
   font-weight: bold;
 }
+
 div.game_select div.options_wrapper button {
   height: 50px;
   font-size: 1.5rem;
 }
+
 div.game_select div.options_wrapper div.select_role {
   width: 100%;
   height: auto;
+  display: -ms-grid;
   display: grid;
   grid-gap: 15px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
 div.game_select div.options_wrapper.half {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 5fr 2fr;
+  -ms-grid-columns: 5fr 2fr;
+      grid-template-columns: 5fr 2fr;
   grid-gap: 15px;
 }
+
 div.game_select fieldset {
   border: none;
 }
-
 /*# sourceMappingURL=NewGame.css.map */
