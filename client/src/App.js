@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import {useEffect} from "react";
 import PlayGame from "./pages/PlayGame";
 import Message from "./components/Message";
+import End from "./pages/End";
 
 function App() {
     console.log("App mount")
@@ -36,6 +37,9 @@ function App() {
               </Route>
               <Route path={"/404"}>
                   <NotFound />
+              </Route>
+              <Route path={"/end"}>
+                  <End/>
               </Route>
               <Route path={"*"}>
                 <Redirect to={"/404"} />
