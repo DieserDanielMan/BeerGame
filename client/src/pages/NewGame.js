@@ -190,7 +190,7 @@ function NewGame(props) {
                 /> 
                 <span>Wählen Sie die erhöhte Nachfrage:</span>
                 <InputField
-                    name={"Nachfragemenge"}
+                    name={"erhöhte Nachfragemenge"}
                     getValue={setRaisedValue}
                     description={"Bsp.: 10"}
                 /> 
@@ -198,7 +198,7 @@ function NewGame(props) {
                 <InputField
                     name={"Runde der Erhöhung"}
                     getValue={setRoundOfRaise}
-                    description={"je nach Anzahl der Sielrunden 17 oder 35"}
+                    description={"je nach Anzahl der Spielrunden 17 oder 35"}
                 /> 
                 
 

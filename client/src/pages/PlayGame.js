@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import Container from "../components/form/Container";
 import InnerContainer from "../components/form/InnerContainer";
 import Button from "../components/form/Button";
+import Countdown from '../lib/Countdown';
 
 function PlayGame(props) {
 
@@ -19,12 +20,14 @@ function PlayGame(props) {
         }
     })
 
+    const hoursMinSecs = {hours:0, minutes: 0, seconds: 60}
+    
     return (
         <div>
             <div className={"grid_play"}>
                 <div className={"playground"}>
                     <div className={"timer"}>
-                        <span>Verbleibende Zeit: 15sec</span>
+                        <Countdown hoursMinSecs={hoursMinSecs}/>
                     </div>
                     <div className={"wrapper_img"}>
                         <img src={"/icons/box.svg"} alt={"Icon"} />
@@ -65,28 +68,36 @@ function PlayGame(props) {
                                  <tr>
                                     <th>Runde</th>
                                     <th>Lagerkosten</th>
-                                    <th>Backorderkosten</th>
                                     <th>Gesamtkosten</th>
+                                    <th>Perfekte Auftragsrate</th>
+                                    <th>Durchschnittlicher Lagerbestand</th>
+                                    <th>Wochen mit Lieferrückstand</th>
                                 </tr>
                                 <tr>
                                     <td>1</td>
                                     <td>20</td>
-                                    <td>0</td>
                                     <td>20</td>
+                                    <td>80%</td>
+                                    <td>10</td>
+                                    <td>0%</td>
 
                                 </tr>
                                 <tr>
                                     <td>2</td>
                                     <td>20</td>
-                                    <td>0</td>
-                                    <td>20</td>
+                                    <td>40</td>
+                                    <td>50%</td>
+                                    <td>15</td>
+                                    <td>50%</td>
 
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>20</td>
-                                    <td>0</td>
-                                    <td>20</td>
+                                    <td>10</td>
+                                    <td>50</td>
+                                    <td>66%</td>
+                                    <td>13</td>
+                                    <td>66%</td>
 
                                 </tr>
                             </table>         
