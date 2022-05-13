@@ -42,4 +42,12 @@ div.end div.wrapper_button button {
   height: 80px;
   font-size: 1.5rem;
 }
+
+tr{
+    text-align: center;
+}
+h5{
+    text-align: center;
+    font-size: 25px;
+}
 /*# sourceMappingURL=End.css.map */
