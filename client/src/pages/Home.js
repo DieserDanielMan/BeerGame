@@ -15,9 +15,14 @@ class Home extends React.Component {
             <div className={"home"}>
                 <h2>Herzlich Willkommen auf der Startseite des Beergame! Ein gemeinsames Projekt der Welfen-Akademie und der LeibnizFH.</h2>
                 <div className={"wrapper_logos"}>
-                    <div className={"logo leibniz"} />
+
+                    <a href="https://leibniz-fh.de/" id="logo">
+                        <div className={"logo leibniz"} F/>
+                    </a>
                     <div className={"logo Beergame"} />
-                    <div className={"logo welfen"} />
+                    <a href="https://www.welfenakademie.de/" id="logo">
+                        <div className={"logo welfen"} />
+                    </a>
                 </div>
                 <h4>Das Ziel des Spiels ist es, Lieferengpässe zu vermeiden und die Bestellungen
                     innerhalb der Lieferkette, trotz Nachfrageschwankungen,
