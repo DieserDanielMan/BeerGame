@@ -5,6 +5,7 @@ import JoinGame from "./controller/JoinGame.js";
 import CreateGame from "./controller/CreateGame.js";
 
 import DBGame from "./model/DBGame.js";
+import UpdateGame from "./controller/UpdateGame.js";
 
 const GameData = mongoose.model("DBGame", DBGame)
 
@@ -21,9 +22,10 @@ mongoose.connect("mongodb+srv://ersterUserTest:Welfniz22db@beergame.supqd.mongod
     .then(()=>{
         io.on("connection", (socket) => {
             const sid = socket.id
-            socket.on("check_game", (data) => CheckGame(io, socket, data))
+            //socket.on("check_game", (data) => CheckGame(io, socket, data))
             socket.on("join_game", (data) => JoinGame(io, socket, data))
             socket.on("game_create", (data) => CreateGame(io, socket, data))
+            socket.on("game_update", (data) => UpdateGame(io, socket, data))
             socket.on("disconnect", (socket) => {
                 GameData.findOne({ $or: [
                         {"playerData.producer": sid},

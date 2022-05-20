@@ -56,6 +56,11 @@ const DBGame = new Schema({
         }
     },
     roundData: {
+        currentRound: {
+            type: Number,
+            required: true,
+            default: 1
+        },
         producer: {
             type: Array
         },

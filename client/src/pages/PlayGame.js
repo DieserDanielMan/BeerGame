@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom"
 
 import "../styles/pages/PlayGame.css"
 import InputField from "../components/form/InputField"
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import Container from "../components/form/Container";
 import InnerContainer from "../components/form/InnerContainer";
 import Button from "../components/form/Button";
@@ -10,17 +10,30 @@ import Countdown from '../lib/Countdown';
 
 function PlayGame(props) {
 
-    const gameId = useParams()
+    const gameCode = localStorage.getItem("room")
+    const selectedRole = localStorage.getItem("role")
     const socket = props.socketId
+    const hoursMinSecs = {hours:0, minutes: 0, seconds: 60}
+
+    const [orderValue, setOrderValue] = useState(50)
 
     useEffect(() => {
+        socket.on("update_player_data", (data) => {
+            console.log("Datenobjekt Aktualisiert")
+        })
         console.log("Comp mount")
         return function cleanup() {
             console.log("Comp unmount")
         }
     })
 
-    const hoursMinSecs = {hours:0, minutes: 0, seconds: 60}
+    function submitOrder() {
+        socket.emit("game_update", {
+            gameCode,
+            selectedRole,
+            orderValue
+        })
+    }
     
     return (
         <div>
@@ -42,7 +55,7 @@ function PlayGame(props) {
                     <div className={"new_order"}>
                         <span>Neue Bestellung:</span>
                         <InputField />
-                        <Button>Bestellen</Button>
+                        <Button onClick={submitOrder}>Bestellen</Button>
                     </div>
                     <div className={"line"} />
                     <>

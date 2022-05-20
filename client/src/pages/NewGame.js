@@ -41,6 +41,7 @@ function NewGame(props) {
             {
                 console.log("Rolle gewählt: " + data.body)
                 localStorage.setItem("role", JSON.stringify(data.body.role))
+                localStorage.setItem("room", JSON.stringify(data.body.room))
                 setRedirectComponent(<Redirect to={`/game/play/${data.body.room}`} />)
             }
         })
@@ -140,6 +141,7 @@ function NewGame(props) {
                     roundOfRaise
                 },
                 roundData: {
+                    currentRound: 1,
                     producer: [],
                     distributor: [],
                     wholesaler: [],
