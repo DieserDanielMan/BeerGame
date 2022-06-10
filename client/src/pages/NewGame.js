@@ -141,7 +141,7 @@ function NewGame(props) {
                     roundOfRaise
                 },
                 roundData: {
-                    currentRound: 1,
+                    currentRound: 0,
                     producer: [],
                     distributor: [],
                     wholesaler: [],

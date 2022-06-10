@@ -32,23 +32,47 @@ class InputField extends React.Component {
     }
 
     render() {
-        return (
-            <div className={"input_wrapper"}>
-                <input
-                    className={this.state.error ? "invalid" : ""}
-                    type={"text"}
-                    placeholder={this.props.name}
-                    name={this.props.name}
-                    onChange={(event) => this.onChangeHandler(event)}
-                />
-                {this.props.description ?
-                    <p>{this.props.description}</p>
-                :
-                    <></>
-                }
+        if(this.props.disabled) {
+            return (
+                <div className={"input_wrapper"}>
+                    <input
+                        className={this.state.error ? "invalid" : ""}
+                        type={"text"}
+                        placeholder={this.props.name}
+                        name={this.props.name}
+                        onChange={(event) => this.onChangeHandler(event)}
+                        disabled
+                        value={this.props.setValue}
+                    />
+                    {this.props.description ?
+                        <p>{this.props.description}</p>
+                        :
+                        <></>
+                    }
 
-            </div>
-        );
+                </div>
+            );
+        }
+        else {
+            return (
+                <div className={"input_wrapper"}>
+                    <input
+                        className={this.state.error ? "invalid" : ""}
+                        type={"text"}
+                        placeholder={this.props.name}
+                        name={this.props.name}
+                        onChange={(event) => this.onChangeHandler(event)}
+                        value={this.props.setValue}
+                    />
+                    {this.props.description ?
+                        <p>{this.props.description}</p>
+                        :
+                        <></>
+                    }
+
+                </div>
+            );
+        }
     }
 }
 

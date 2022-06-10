@@ -7,6 +7,11 @@ import CreateGame from "./controller/CreateGame.js";
 import DBGame from "./model/DBGame.js";
 import UpdateGame from "./controller/UpdateGame.js";
 
+import Log from "./functions/Log.js"
+
+Log.log("Server gestartet")
+Log.error("Nur ein Test")
+
 const GameData = mongoose.model("DBGame", DBGame)
 
 const httpServer = createServer()
@@ -33,7 +38,7 @@ mongoose.connect("mongodb+srv://ersterUserTest:Welfniz22db@beergame.supqd.mongod
                         {"playerData.wholesaler": sid},
                         {"playerData.retailer": sid},
                     ]}, (err, obj) => {
-                    if(obj === null) return console.log("Hier ist nichts")
+                    if(obj === null) return console.log("[Disconnect-Prüfung] Spieler ist in keinem Spiel aktiv!")
                     else {
                         if(obj.playerData.producer === sid) {
                             obj.playerData.producer = "NA"
@@ -48,7 +53,9 @@ mongoose.connect("mongodb+srv://ersterUserTest:Welfniz22db@beergame.supqd.mongod
                             obj.playerData.retailer = "NA"
                         }
                         obj.save()
-                        console.log("Eine ID zurückgesetzt")
+                        if(io.sockets.adapter.rooms.get(obj.gameCode) !== undefined)
+                            io.to(obj.gameCode).emit("update_room_size",io.sockets.adapter.rooms.get(obj.gameCode).size)
+                        console.log("[Disconnect-Prüfung] Ein Spieler wurde von einem Spiel abgemedlet!")
                     }
                 })
             })

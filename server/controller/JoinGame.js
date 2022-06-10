@@ -40,6 +40,15 @@ export default function JoinGame(io, socket, intData) {
                         data.playerData.retailer = socket.id
                 }
                 data.save()
+                let selectedRoles = []
+                if(data.playerData.producer !== "NA") selectedRoles.push("Produzent")
+                if(data.playerData.distributor !== "NA") selectedRoles.push("Verteiler")
+                if(data.playerData.wholesaler !== "NA") selectedRoles.push("Großhändler")
+                if(data.playerData.retailer !== "NA") selectedRoles.push("Einzelhändler")
+                io.to(room).emit("update_room_size", {
+                    roomSize: io.sockets.adapter.rooms.get(room).size,
+                    selectedRoles
+                })
             }
             else {
                 if(io.sockets.adapter.rooms.get(room).size >= 4)
@@ -61,6 +70,17 @@ export default function JoinGame(io, socket, intData) {
                             data.playerData.retailer = socket.id
                     }
                     data.save()
+                    let selectedRoles = []
+                    if(data.playerData.producer !== "NA") selectedRoles.push("Produzent")
+                    if(data.playerData.distributor !== "NA") selectedRoles.push("Verteiler")
+                    if(data.playerData.wholesaler !== "NA") selectedRoles.push("Großhändler")
+                    if(data.playerData.retailer !== "NA") selectedRoles.push("Einzelhändler")
+                    io.to(room).emit("update_room_size", {
+                        roomSize: io.sockets.adapter.rooms.get(room).size,
+                        selectedRoles
+                    })
+                    //socket.emit("initial_data", data)
+                    io.to(room).emit("initial_data", data)
                 }
             }
         }

@@ -11,9 +11,10 @@
   "author": "Leibniz-Fachhochschule Hannover - Team BeerGame",
   "license": "ISC",
   "dependencies": {
+    "console": "^0.7.2",
     "cors": "^2.8.5",
     "mongoose": "^6.2.10",
-    "socket.io": "^4.3.0"
+    "socket.io": "^4.5.1"
   },
   "devDependencies": {
     "config": "^3.3.7"
