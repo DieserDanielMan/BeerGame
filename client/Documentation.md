@@ -14,4 +14,9 @@ Dieser Befehl wird genutzt, um die benötigten Pakete von Drittanbietern zu inst
 
 ### `npm start`
 Dieser Befehl wird genutzt, um das Projekt zu starten und den Aufruf im Browser (lokal, bzw. im Netzwerk) zu ermöglichen.
-...
+
+### `npm run build`
+Dieser Befehl wird genutzt, um eine Produktivversion des Projekts zu erstellen. Hierbei wird im Ordner `/client` ein neuer Ordner `/build` angelegt. Der Inhalt kann auf einem Webserver bereitgestellt werden.
+
+## Weitere (wichtige) Informationen
+- In der Datei `.gitignore` werden Pfade und Dateien aufgelistet, die nicht auf GitHub hochgeladen werden sollen. 
