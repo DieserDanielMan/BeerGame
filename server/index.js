@@ -1,68 +1,33 @@
-import { createServer } from "http"
+// Import der externen Pakete
 import { Server } from "socket.io";
-import mongoose from "mongoose"
+import mongoose from "mongoose";
+import * as dotenv from "dotenv";
+dotenv.config()
+
+// Import eigener Pakete und Komponenten
 import JoinGame from "./controller/JoinGame.js";
 import CreateGame from "./controller/CreateGame.js";
-
-import DBGame from "./model/DBGame.js";
 import UpdateGame from "./controller/UpdateGame.js";
+import LeaveGame from "./controller/LeaveGame.js";
 
-import Log from "./functions/Log.js"
-
-Log.log("Server gestartet")
-Log.error("Nur ein Test")
-
-const GameData = mongoose.model("DBGame", DBGame)
-
-const httpServer = createServer()
-const io = new Server(httpServer,{
-    cors: {
-        //origin: "http://beergame.usb-sys.de",
-        origin: "*",
-        methods: ["GET", "POST"]
-    }
+const io = new Server({
+  cors: {
+    origin: process.env.SERVER_CORS_ORIGIN
+  }
 });
 
-mongoose.connect("mongodb+srv://ersterUserTest:Welfniz22db@beergame.supqd.mongodb.net/BeerGame?retryWrites=true&w=majority")
-    .then(()=>{
-        io.on("connection", (socket) => {
-            const sid = socket.id
-            //socket.on("check_game", (data) => CheckGame(io, socket, data))
-            socket.on("join_game", (data) => JoinGame(io, socket, data))
-            socket.on("game_create", (data) => CreateGame(io, socket, data))
-            socket.on("game_update", (data) => UpdateGame(io, socket, data))
-            socket.on("disconnect", (socket) => {
-                GameData.findOne({ $or: [
-                        {"playerData.producer": sid},
-                        {"playerData.distributor": sid},
-                        {"playerData.wholesaler": sid},
-                        {"playerData.retailer": sid},
-                    ]}, (err, obj) => {
-                    if(obj === null) return console.log("[Disconnect-Prüfung] Spieler ist in keinem Spiel aktiv!")
-                    else {
-                        if(obj.playerData.producer === sid) {
-                            obj.playerData.producer = "NA"
-                        }
-                        else if(obj.playerData.distributor === sid) {
-                            obj.playerData.distributor = "NA"
-                        }
-                        else if(obj.playerData.wholesaler === sid) {
-                            obj.playerData.wholesaler = "NA"
-                        }
-                        else {
-                            obj.playerData.retailer = "NA"
-                        }
-                        obj.save()
-                        if(io.sockets.adapter.rooms.get(obj.gameCode) !== undefined)
-                            io.to(obj.gameCode).emit("update_room_size",io.sockets.adapter.rooms.get(obj.gameCode).size)
-                        console.log("[Disconnect-Prüfung] Ein Spieler wurde von einem Spiel abgemedlet!")
-                    }
-                })
-            })
-        });
-        console.log('Database connected');
-}).catch(() => {
-    console.log("Error")
+mongoose.connect(process.env.MONGOOSE_CONNECTIONSTRING)
+  .then(() => {
+    io.on("connection", (socket) => {
+      socket.on("join_game", (data) => JoinGame(io, socket, data))
+      socket.on("game_create", (data) => CreateGame(io, socket, data))
+      socket.on("game_update", (data) => UpdateGame(io, socket, data))
+      socket.on("disconnect", () => LeaveGame(io, socket))
+    });
+    console.log("Server auf Port " + process.env.SERVER_PORT + " gestartet. Datenbankverbindung hergestellt.");
+  })
+  .catch((err) => {
+    console.log("Server konnte nicht gestartet werden. Fehlermeldung:\n" + err.message);
 });
 
-httpServer.listen(3001);
+io.listen(process.env.SERVER_PORT)

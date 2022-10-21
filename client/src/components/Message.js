@@ -1,14 +1,13 @@
 import React from "react";
-import {render} from "react-dom";
 
 class Message extends React.Component {
-    render() {
-        return (
-            <div>
+  render() {
+    return (
+      <div>
 
-            </div>
-        );
-    }
+      </div>
+    );
+  }
 }
 
 export default Message

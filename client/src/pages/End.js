@@ -1,8 +1,6 @@
 import React from "react";
 
-import Button from "../components/form/Button"
 import "../styles/pages/End.css"
-import {Link} from "react-router-dom";
 
 class End extends React.Component {
     onClickHandler() {
@@ -203,10 +201,7 @@ class End extends React.Component {
                                  
                         </div>
                     </div>
-                </div> 
-
-                
-                <h4></h4>
+                </div>
                 <div className={"wrapper_button"}>
                     {/* <Link to={"/game/create"}>
                         <Button linkTo={"/game/create"}>Spiel starten</Button>

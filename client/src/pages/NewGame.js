@@ -1,14 +1,11 @@
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react"
 import { Redirect } from "react-router-dom"
-import axios from "axios"
 
 import "../styles/pages/NewGame.css"
 import Tile from "../components/Tile"
 import Button from "../components/form/Button"
 import InputField from "../components/form/InputField"
 import checkIfStringIsValid from "../lib/checkIfStringIsValid";
-import Switch from "../components/form/Switch";
-import NumericInput from "../components/form/NumericInput";
 
 function NewGame(props) {
 
@@ -17,9 +14,7 @@ function NewGame(props) {
     const [selectedGameMode, setSelectedGameMode] = useState(0)
     const [selectedRole, setSelectedRole] = useState(0)
     const [gameCode, setGameCode] = useState("")
-    const [redirect, setRedirect] = useState("")
     const [rounds, setRounds] = useState(0)
-    const [numericValue, setNumericValue] = useState("")
     const [startStock, setStartStock]= useState(0)
     const [startValue, setStartValue]= useState(0)
     const [raisedValue, setRaisedValue]= useState(0)
@@ -77,12 +72,7 @@ function NewGame(props) {
             socket.off("game_choose_role")
             socket.off("game_create")
         }
-    }, [])
-
-    /*if(redirect.length > 0)
-    {
-        redirectComponent = <Redirect to={`/game/play/${gameCode}`} />
-    }*/
+    }, [socket]) //Socket hinzugefügt
 
     function onJoinGameClick() {
         if(checkIfStringIsValid(gameCode)) {
@@ -201,42 +191,7 @@ function NewGame(props) {
                     name={"Runde der Erhöhung"}
                     getValue={setRoundOfRaise}
                     description={"je nach Anzahl der Spielrunden 17 oder 35"}
-                /> 
-                
-
-                {/*
-                    <span>Wählen Sie eine Rolle:</span>
-                    <div className={"select_role"}>
-                        <Tile
-                            imgSrc={"/icons/factory.svg"}
-                            imgAlt={"Neues Spiel"}
-                            idKey={1}
-                            getValue={setSelectedRole}
-                            currentSelected={selectedRole}
-                        >Produzent</Tile>
-                        <Tile
-                            imgSrc={"/icons/box.svg"}
-                            imgAlt={"Neues Spiel"}
-                            idKey={2}
-                            getValue={setSelectedRole}
-                            currentSelected={selectedRole}
-                        >Verteiler</Tile>
-                        <Tile
-                            imgSrc={"/icons/wholesale.svg"}
-                            imgAlt={"Neues Spiel"}
-                            idKey={3}
-                            getValue={setSelectedRole}
-                            currentSelected={selectedRole}
-                        >Großhändler</Tile>
-                        <Tile
-                            imgSrc={"/icons/shop.svg"}
-                            imgAlt={"Neues Spiel"}
-                            idKey={4}
-                            getValue={setSelectedRole}
-                            currentSelected={selectedRole}
-                        >Einzelhändler</Tile>
-                    </div>
-                */}
+                />
                 <Button onClick={createGame}>Spiel erstellen</Button>
             </div>
         )

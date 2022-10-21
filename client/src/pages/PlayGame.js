@@ -1,8 +1,6 @@
 import "../styles/pages/PlayGame.css"
 import InputField from "../components/form/InputField"
 import {useEffect, useState} from "react";
-import Container from "../components/form/Container";
-import InnerContainer from "../components/form/InnerContainer";
 import Button from "../components/form/Button";
 import Countdown from '../lib/Countdown';
 
@@ -28,35 +26,37 @@ function PlayGame(props) {
     useEffect(() => {
         socket.on("update_player_data", (data) => {
             console.log("UpdatePlayer aufgerufen")
-            setCurrentRound(data.roundData.currentRound+2)
+            console.log(data)
+            setCurrentRound(data.roundData.currentRound)
+            console.log(data.roundData.currentRound)
             setInputActive(true)
             if(selectedRole === 1) {
-                setStock(data.roundData.producer[data.roundData.currentRound].stock)
-                setDelay(data.roundData.producer[data.roundData.currentRound].delay)
-                setNext1WeekDelivery(data.roundData.producer[data.roundData.currentRound].next1Week)
-                setNext2WeekDelivery(data.roundData.producer[data.roundData.currentRound].next2Week)
-                setSupplyChainOrder(data.roundData.producer[data.roundData.currentRound].supplyChainOrder)
+                setStock(data.roundData.producer[data.roundData.currentRound-1].stock)
+                setDelay(data.roundData.producer[data.roundData.currentRound-1].delay)
+                setNext1WeekDelivery(data.roundData.producer[data.roundData.currentRound-1].next1Week)
+                setNext2WeekDelivery(data.roundData.producer[data.roundData.currentRound-1].next2Week)
+                setSupplyChainOrder(data.roundData.distributor[data.roundData.currentRound-1].order)
             }
             else if(selectedRole === 2) {
-                setStock(data.roundData.distributor[data.roundData.currentRound].stock)
-                setDelay(data.roundData.distributor[data.roundData.currentRound].delay)
-                setNext1WeekDelivery(data.roundData.distributor[data.roundData.currentRound].next1Week)
-                setNext2WeekDelivery(data.roundData.distributor[data.roundData.currentRound].next2Week)
-                setSupplyChainOrder(data.roundData.distributor[data.roundData.currentRound].supplyChainOrder)
+                setStock(data.roundData.distributor[data.roundData.currentRound-1].stock)
+                setDelay(data.roundData.distributor[data.roundData.currentRound-1].delay)
+                setNext1WeekDelivery(data.roundData.distributor[data.roundData.currentRound-1].next1Week)
+                setNext2WeekDelivery(data.roundData.distributor[data.roundData.currentRound-1].next2Week)
+                setSupplyChainOrder(data.roundData.wholesaler[data.roundData.currentRound-1].order)
             }
             else if(selectedRole === 3) {
-                setStock(data.roundData.wholesaler[data.roundData.currentRound].stock)
-                setDelay(data.roundData.wholesaler[data.roundData.currentRound].delay)
-                setNext1WeekDelivery(data.roundData.wholesaler[data.roundData.currentRound].next1Week)
-                setNext2WeekDelivery(data.roundData.wholesaler[data.roundData.currentRound].next2Week)
-                setSupplyChainOrder(data.roundData.wholesaler[data.roundData.currentRound].supplyChainOrder)
+                setStock(data.roundData.wholesaler[data.roundData.currentRound-1].stock)
+                setDelay(data.roundData.wholesaler[data.roundData.currentRound-1].delay)
+                setNext1WeekDelivery(data.roundData.wholesaler[data.roundData.currentRound-1].next1Week)
+                setNext2WeekDelivery(data.roundData.wholesaler[data.roundData.currentRound-1].next2Week)
+                setSupplyChainOrder(data.roundData.retailer[data.roundData.currentRound-1].order)
             }
             else {
-                setStock(data.roundData.retailer[data.roundData.currentRound].stock)
-                setDelay(data.roundData.retailer[data.roundData.currentRound].delay)
-                setNext1WeekDelivery(data.roundData.retailer[data.roundData.currentRound].next1Week)
-                setNext2WeekDelivery(data.roundData.retailer[data.roundData.currentRound].next2Week)
-                setSupplyChainOrder(data.roundData.retailer[data.roundData.currentRound].supplyChainOrder)
+                setStock(data.roundData.retailer[data.roundData.currentRound-1].stock)
+                setDelay(data.roundData.retailer[data.roundData.currentRound-1].delay)
+                setNext1WeekDelivery(data.roundData.retailer[data.roundData.currentRound-1].next1Week)
+                setNext2WeekDelivery(data.roundData.retailer[data.roundData.currentRound-1].next2Week)
+                setSupplyChainOrder(data.roundData.retailer[data.roundData.currentRound-1].supplyChainOrder)
             }
         })
         socket.on("initial_data", (data) => {
@@ -67,9 +67,6 @@ function PlayGame(props) {
             setCurrentRoomSize(data.roomSize)
             setCurrentRoomRoles(data.selectedRoles)
         })
-        /*return function cleanup() {
-
-        }*/
     })
 
     function submitOrder() {
