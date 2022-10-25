@@ -12,9 +12,11 @@ import Message from "./components/Message";
 import End from "./pages/End";
 
 function App() {
-  //const socket = io.connect("http://beergame.usb.systems:3001")
-  const socket = io.connect("https://api-beergame.usb-sys.de")
+  //Verbindung zum Server herstellen
+  const socket = io.connect("http://localhost:3001")
+  //const socket = io.connect("https://api-beergame.usb-sys.de")
   useEffect(() => {
+      //Callback um zu prüfen, ob die Verbindung erfolgreich hergestellt wurde
       socket.on("connect", () => {
           console.log("Verbindung zum SocketIO-Server hergestellt. Client-SocketID: " + socket.id);
       })

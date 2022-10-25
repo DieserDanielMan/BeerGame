@@ -28,11 +28,12 @@ function NewGame(props) {
     const [redirectComponent, setRedirectComponent] = useState(<></>)
 
     useEffect(() => {
+        //Dem Spiel beitreten
         socket.on("join_to_game", (data) => {
             console.log("Socket called")
-            if(data.head.err)
+            if(data.head.err) //Wenn es beim Spielbeitritt einen Fehler gibt, wird dieser per alert ausgegeben
                 alert(data.head.errMsg)
-            else
+            else //Wenn es keinen Fehler gibt, wird die Spielseite aufgerufen
             {
                 console.log("Rolle gewählt: " + data.body)
                 localStorage.setItem("role", JSON.stringify(data.body.role))
@@ -40,6 +41,7 @@ function NewGame(props) {
                 setRedirectComponent(<Redirect to={`/game/play/${data.body.room}`} />)
             }
         })
+        //Spielrolle wählen
         socket.on("game_choose_role", data => {
             console.log(data)
             setSelectRoleMenu(true)
@@ -58,6 +60,7 @@ function NewGame(props) {
             else tempArray.push(true)
             setDisabledRoles(tempArray)
         })
+        //Spiel erstellen
         socket.on("game_create", data => {
             if(data.head.err) {
                 alert(data.head.errMsg)
@@ -67,6 +70,7 @@ function NewGame(props) {
                 alert(data.head.message)
             }
         })
+        //Cleanup-Function benötigt, da bei einem erneuten laden der Seite alle Sockets abgerufen werden würden
         return function cleanup() {
             socket.off("join_to_game")
             socket.off("game_choose_role")

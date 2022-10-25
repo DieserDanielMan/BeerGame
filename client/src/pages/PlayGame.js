@@ -6,24 +6,29 @@ import Countdown from '../lib/Countdown';
 
 function PlayGame(props) {
 
-    const gameCode = JSON.parse(localStorage.getItem("room"))
-    const selectedRole = JSON.parse(localStorage.getItem("role"))
+    const gameCode = JSON.parse(localStorage.getItem("room")) //Spielcode
+    const selectedRole = JSON.parse(localStorage.getItem("role")) //Gewählte Spielrolle
+    // ==> 1: Produzent | 2: Verteiler | 3: Großhändler | 4: Einzelhändler
+
     const socket = props.socketId
     const hoursMinSecs = {hours:0, minutes: 0, seconds: 60}
 
-    const [orderValue, setOrderValue] = useState("")
-    const [inputActive, setInputActive] = useState(true)
-    const [currentRoomSize, setCurrentRoomSize] = useState(0)
-    const [currentRoomRoles, setCurrentRoomRoles] = useState([])
+    const [orderValue, setOrderValue] = useState("") //Bestellung
+    const [inputActive, setInputActive] = useState(true) //Aktiviert oder Deaktiviert das Eingabefeld für die Bestellung
+    const [currentRoomSize, setCurrentRoomSize] = useState(0) //Aktuelle Spieler im Spiel
+    const [currentRoomRoles, setCurrentRoomRoles] = useState([]) //Rollen, die bereits vergeben sind
 
-    const [currentRound, setCurrentRound] = useState(1)
-    const [stock, setStock] = useState(0)
-    const [delay, setDelay] = useState(0)
-    const [next1WeekDelivery, setNext1WeekDelivery] = useState(0)
-    const [next2WeekDelivery, setNext2WeekDelivery] = useState(0)
-    const [supplyChainOrder, setSupplyChainOrder] = useState(0)
+    const [gameRounds, setGameRounds] = useState(0) //Spielrunden (insgesamt)
+    const [currentRound, setCurrentRound] = useState(1) //Aktuelle Spielrunde
+    const [stock, setStock] = useState(0) //Lagerbestand
+    const [delay, setDelay] = useState(0) //Verzögerung
+    const [next1WeekDelivery, setNext1WeekDelivery] = useState(0) //Lieferung nächste Woche
+    const [next2WeekDelivery, setNext2WeekDelivery] = useState(0) //Lieferung übernächste Woche
+    const [supplyChainOrder, setSupplyChainOrder] = useState(0) //Lieferanfrage
 
     useEffect(() => {
+      // Update_Player_Data: Wird aufgerufen, wenn alle die Bestellung abgeschickt haben.
+      // Daten werden vom Server berechnet und dann an die Clients gepusht
         socket.on("update_player_data", (data) => {
             console.log("UpdatePlayer aufgerufen")
             console.log(data)
@@ -56,11 +61,18 @@ function PlayGame(props) {
                 setDelay(data.roundData.retailer[data.roundData.currentRound-1].delay)
                 setNext1WeekDelivery(data.roundData.retailer[data.roundData.currentRound-1].next1Week)
                 setNext2WeekDelivery(data.roundData.retailer[data.roundData.currentRound-1].next2Week)
+                if(currentRound < data.gameSettings.roundOfRaise) {
+                  setSupplyChainOrder(data.gameSettings.startValue)
+                }
+                else {
+                  setSupplyChainOrder(data.gameSettings.raisedValue)
+                }
                 setSupplyChainOrder(data.roundData.retailer[data.roundData.currentRound-1].supplyChainOrder)
             }
         })
         socket.on("initial_data", (data) => {
             console.log(data)
+            setGameRounds(data.gameSettings.rounds)
             setStock(data.gameSettings.startStock)
         })
         socket.on("update_room_size", (data) => {
@@ -129,7 +141,7 @@ function PlayGame(props) {
         let roleName = ""
         if(selectedRole === 1) {
             roleIcon = "/icons/factory.svg"
-            roleName = "Hersteller"
+            roleName = "Produzent"
         }
         else if(selectedRole === 2) {
             roleIcon = "/icons/box.svg"
@@ -151,7 +163,7 @@ function PlayGame(props) {
                     <div className={"playground"}>
                         <div className={"timer"}>
                             <Countdown hoursMinSecs={hoursMinSecs}/>
-                            <p>{currentRound}</p>
+                            <p>Runde {currentRound}/{gameRounds}</p>
                         </div>
                         <div className={"wrapper_img"}>
                             <img src={roleIcon} alt={"Icon"} />
@@ -227,7 +239,6 @@ function PlayGame(props) {
                         </div>
                     </div>
                 </div>
-
             </div>
         )
     }
