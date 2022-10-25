@@ -13,6 +13,8 @@ import End from "./pages/End";
 
 function App() {
   //Verbindung zum Server herstellen
+  //ACHTUNG: HTTPS kann nur als Protokoll genutzt werden, wenn ein Zertifikat eingerichtet ist!
+  //Die Nutzung eines Zertifikates wird durch den Einsatz von nginx als Reverse-Proxy ermöglicht!
   const socket = io.connect("http://localhost:3001")
   //const socket = io.connect("https://api-beergame.usb-sys.de")
   useEffect(() => {
